@@ -1,103 +1,29 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+  return <main className="[&_h1]:text-2xl [&_h1]:font-bold [&_h1]:my-4 [&_p]:text-lg [&_h2]:text-xl [&_h2]:font-bold [&_h2]:my-2 [&_p]:mb-2">
+    <h1>산티아고의 기록</h1>
+    <p>산티아고 순례길을 걸은 기록</p>
+    <p>2023년 9월 즈음 나는 그동안 준비한 장비들과 계획을 실행에 옮겼다. 엄마가 차로 집 근처 터미널까지 바래다 주시고 나는 공항행 버스를 탔다. 짐은 가방 하나에 다 들어 있었다. 그 외의 짐은 가져갈 수 없다. 800km 되는 길을 걸으려면 짐이 많아도 안 되고 적어도 안 된다.</p>
+    <p>약 35일 간의 여정은 공책 한 권에 이것 저것 적어두었다. 인터넷에 공개된 기록으로서는 쓸 생각이 그닥 없었던 것 같은데, 2년 정도가 지나고, 이제는 그곳에서 겪은 일들이 조금 희미해졌을 즈음, 다시 한번 그 당시의 모험같은 기록을 떠올리고자, 또 누군가 필요한 사람이 볼까 하는 마음에 다시 기록을 해본다.</p>
+    <p>기억에 의지해서만 쓰려니 모든 일들을 떠올릴 수는 없을 것 같아서, 기회가 될 때 본가에 있는 산티아고 일기를 가져와야겠다.</p>
+    <p>산티아고 순례길을 걸으려면 준비해야 하는 것들이 몇 가지 있다. 트래킹화는 필수이고, 모자, 가방, 우비 등등이 되겠다. 등산 스틱도 포함해서 모든 것들을 가방 하나에 넣었더니 가방이 빵빵했다. 무엇하나 더 넣을 수도 뺄 수도 없는 상태의 가방을 매고 공항을 갔을 것이다. 지금 기억하자니 인천 공항에서 어떤 절차를 밟았는지 제대로 기억이 나지를 않는다. 항공편은 사우디 아라비아의 어는 항공이었을 것이고 경유지도 사우디였다. 리야드. 다시 기억이 난다.</p>
+    <p>비행기 표를 예매하는 데도 많은 시간을 들였던 것 같다. 네이버, 구글부터 트립닷컴, 또 어딘가 처음 들어보는 해외 사이트들을 뒤지면서 파리행 비행기표를 찾았다. 참 어이가 없었던 것이 처음 봤던 가격으로 들어갔던 링크가 새로고침을 한다거나 하면 가격이 몇 십만원 올라가는 일이 반복됐다는 것이다. 비행기 티켓 예매란 그런 것인가 보다 하면서 어찌저찌 고른 것이 사우디 항공이었다.</p>
+    <p>생애 첫 유럽. 생애 첫 사우디. 그런 생각을 하면서 비행기가 이륙했을 것이다.</p>
+    <p>그리고 사우디에서 19시간인가를 경유 대기해야 했다. 잠깐이라도 밖으로 나가서 중동 국가 구경을 해볼까 했었는데, 사우디 비자를 받으려면 몇 백 달러를 내야해서 공항에서 대기 같은 노숙을 했다. 이곳 의자에 몇 시간 앉아 있다가 저곳 의자에 앉아 있다가, 핸드폰 충전을 하다가, 화장실도 가고, 편의점도 가고, 공항 내 푸드 코트도 가고, 마지막 즈음엔 지쳐서 다른 사람들 처럼 바닥에 그냥 누워서 가방을 베개 삼고 있었다. 자고 싶었지만 출국장 내의 그 특유의 어수선함, 도둑을 맞을지도 모른다는 불안 때문에 제대로 자지도 못했다. 겨우 겨우 다음 비행기 시간이 다가왔고, 다음 목적지 파리로 출발했다. 나중에 가서 알았지만 그 공항 어디에선가 등산 스틱 고무캡 한 쪽을 잃어버렸다.</p>
+    <h2>파리</h2>
+    <p>동이 틀 즈음에 비행기가 도착했다. 출국 과정은 너무나 순조로웠다. 나가는 줄이 긴 것을 보고 시간이 깨나 걸리겠다고 생각했는데, 유도선을 따라 지그재그로 줄 뒤쪽으로 가는 중에 공항 직원이 나를 콕 집더니 옆에 있는 게이트로 인도를 했다. 아직도 내가 왜 그 검색대를 통해서 왔는지 모르겠다. 관광객이나 현지인이나 다른 사람들은 다 다른 줄에 있었는데 말이다.</p>
+    <p>결과적으로는 너무 좋지 않았겠는가. 공항을 나와서 구글맵에서 본 대로 지하철역으로 향했다. 지하철을 타고 파리로 가야했다. 에펠탑이 있고 센 강과 루브르가 있는 그 지역으로. 공항의 이름은 샤를드골.</p>
+    <p>프랑스의 지하철은 종이 티켓을 끊어야 한다. 그걸 어디서 끊어야 하는지 몰라 조금 헤매다가 표 끊는 기계를 찾아냈다. 한국 지하철의 교통카드 충전 기계와 비슷한 그것. 영어로 번역해서 보는데도 내가 티켓을 잘 끊고 있는 건지 확실하지 않았지만, 이렇게 하면 된거겠지 하면서 표를 끊고 지하철을 타고 파리로 출발했다.</p>
+    <p>설레이면서도 무언가 한국의 지하철과 같은 모습이 보여서 재밌었다.</p>
+    <p>내렸던 지하철역이 어땠는지는 기억이 잘 안 난다. 그러고 나온 파리의 햇살이 찌르는 듯이 강했던 것이 기억 난다. 숙소로 먼저 갔었나? 락커가 있는 쪽으로 갔던가. 둘 다 했는데 무엇이 먼저인지 모르겠다. 숙소로 갔다면 사물함을 쓸 필요가 없었을 테니 락커 대여 가게로 먼저 갔을 것이다. 가방을 맡기고 아마 어느 식당에서 끼니를 때웠다.</p>
+    <p>메뉴도 뭐가 뭔지를 몰라서 번역기를 돌려보고, 치즈와 햄, 레몬에이드를 시켰다. 치즈를 그렇게 좋아하지도 않는데 그나마 나아보이는 게 그 메뉴였다. 치즈는 역시 그 특유의 쓰면서 구수하면서 된장과도 같은 그런 느낌이었고, 햄은 햄이었고, 레몬에이드는 희한하게 테이블 위에 있는 설탕을 따로 넣어 먹는 식이었다. 설탕을 많이 많이 넣었다. 샐러드도 나왔었다.</p>
+    <p>그 가게에는 테라스가 있었고, 블록의 코너에 있어서 두쪽면이 통창이었다. 통창은 열려 있어서 나는 창과 가까운 의자에 앉아서 파리의 풍경을 바라보며 음식을 먹었다. 자전거를 타고 다니는 사람이 유난히 많았고, 찻길 폭이 의외로 좁았다. 햇살은 파리의 머물던 매일 매일이 강렬했다.</p>
+    <p>그러고서 루브르 박물관으로 걸어갔다. 순서가 그것이 맞는 것 같다. 숙소와 루브르 사이 거리가 좀 돼서 락커에 가방을 넣어 놓고 첫날을 보냈다.</p>
+    <p>루브르에 대기줄이 아주 길었다. 햇살은 너무 따가웠고. 사우디에서 거의 하루를 노숙하면서 피로가 쌓였고. 그런 것들이 쌓여서 여러모로 힘든 상태였다. 하지만 언제 프랑스를 다시 갈까. 어떻게든 버텨서 안으로 들어갔다. 교과서에서만 보던 루브르의 그 투명한 피라미드 안으로.</p>
+    <p>교과서나 티비에서만 보던 명화들과 조각상들을 두 눈으로 직접 본다는 것은 참 분에 겨운 일이다. 어찌보면 자주 보던 것들인데, 또 어찌보면 새롭게 보인다. 왜 그렇게 비너스를 칭송하는지도 알겠고, 왜 그렇게 중세 그림들을 좋아하는지도 이해가 됐다. 모나리자가 있는 공간에는 사람으로 그득해서 결국 먼 발치에서만 보고 나와버렸다. 그게 좀 아쉽다. 사람을 뚫고 가까이서 보고 싶었는데, 체력이 이미 떨어질 대로 떨어진 상태였다. 경유 후 도착하자마자 루브르를 볼 계획을 잡았다는 것이 어리석을 뿐. 하루에 하나씩만 하는 것이 좋다.</p>
+    <p>지친 몸을 이끌고 박물관을 나왔을 때도 해가 중천에 있었고, 버스를 기다리는데 햇빛을 피할 곳이 없어서 가만히 서 있는 것마저도 체력을 갉아먹었다. 락커에서 가방을 꺼내 온 상태였기 때문에 무겁기도 무거웠고. 그렇게 숙소로 가는 버스를 탔다.</p>
+    <p>숙소가 있는 곳도 도시였고, 방은 네 명인가 여덟명이 같이 쓰는 식으로 침대마다 커튼이 달려 있었다. 순서는 뒤죽박죽이지만, 그 숙소에서 샤워를 하고, 좀 쉬다가 버거킹에서 끼니를 때우고, 어느 구멍가게에서 건포도와 물 같은 것들을 사고, 밤에는 지하철을 타고 에펠탑을 보러 갔다. 2박 3일인지 1박 2일인지를 파리에서 머물다가 떠나는 날 이른 아침에 산티아고 출발지로 향하는 기차를 타는 곳으로 향하는 버스를 타러 갔다.</p>
+    <p>버스의 좌석은 앞뒤가 좁았고, 아마 한 여덟 시간을 가야했을 것이다. 앞쪽 승객이 좌석을 젖혔던가 어쨌던 일로 버스 타는 일도 힘이 들었다. 조금은 잘 수 있을 줄 알았는데 그러지 못했다.</p>
+    <p>그러고 도착한 도시의 이름이 기억나지 않는다만, 그곳에서 팟타이를 시켰는데 기차시간이 다가와서 먹지 못하고 결국 포장을 했다. 늦은 오후였고, 기차를 타고 출발할 즈음에 해가 졌다.</p>
+    <h2>산티아고</h2>
+    
+  </main>;} 
