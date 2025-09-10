@@ -4,8 +4,20 @@ import { Noto_Sans_KR } from "next/font/google";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  title: "산티아고의 기록",
-  description: "산티아고 순례길을 걸은 기록",
+  title: "forestream",
+  description: "forestream's personal website",
+  authors: [
+    { name: "forestream", url: "https://github.com/forestream" },
+    { name: "forestream", url: "https://velog.io/@forestream" },
+  ],
+  keywords: [
+    "산티아고",
+    "순례길",
+    "기록",
+    "forestream",
+    "santiago",
+    "pilgrimage",
+  ],
 };
 
 const notoSansKR = Noto_Sans_KR({
