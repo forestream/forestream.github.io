@@ -16,6 +16,8 @@
     "@forestream/beep": "0.1.2"
   },
   "devDependencies": {
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-config-prettier": "^10.1.8",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
