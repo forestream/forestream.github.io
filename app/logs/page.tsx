@@ -2,10 +2,7 @@ import { promises as fs } from "fs";
 import { join } from "path";
 import Link from "next/link";
 
-async function getLogDirectories(): Promise<{
-  logsPath: string;
-  directories: string[];
-}> {
+async function getLogDirectories(): Promise<string[]> {
   const logsPath = join(process.cwd(), "app", "logs");
 
   try {
@@ -15,20 +12,19 @@ async function getLogDirectories(): Promise<{
       .map((entry) => entry.name)
       .sort((a, b) => b.localeCompare(a)); // Sort in descending order (newest first)
 
-    return { logsPath, directories };
+    return directories;
   } catch (error) {
     console.error("Error reading logs directory:", error);
-    return { logsPath, directories: [] };
+    return [];
   }
 }
 
 export default async function Page() {
-  const { logsPath, directories } = await getLogDirectories();
+  const directories = await getLogDirectories();
 
   return (
     <ul>
       <h1>Logs</h1>
-      {logsPath}
       {directories.map((dir) => (
         <li key={dir}>
           <Link href={`/logs/${dir}`} className="hover:underline">
