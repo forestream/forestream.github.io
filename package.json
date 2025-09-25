@@ -14,7 +14,7 @@
     "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "@forestream/beep": "^0.1.4"
+    "@forestream/beep": "^0.1.5"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^5.5.4",
