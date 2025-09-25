@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@forestream/beep':
-        specifier: 0.1.2
-        version: 0.1.2
+        specifier: ^0.1.3
+        version: 0.1.3
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -124,8 +124,8 @@ packages:
     resolution: {integrity: sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@forestream/beep@0.1.2':
-    resolution: {integrity: sha512-76SZxjr2CUbU3Vr67UelJ9UIfNiuQf8htXgk64xD6gu8ebx1sS7Y4ScVgak5J0ef/z1Mxad2OynvNgMf+7ZywA==}
+  '@forestream/beep@0.1.3':
+    resolution: {integrity: sha512-GYxhQSjnlsvG/alulwORAhGc2g4fo0LVueA15GlycS9xZ5jMtTHk9puxAfD7SOHMkFjgTYZK24Q/IK+HotGwfQ==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -2002,7 +2002,7 @@ snapshots:
       '@eslint/core': 0.15.2
       levn: 0.4.1
 
-  '@forestream/beep@0.1.2':
+  '@forestream/beep@0.1.3':
     dependencies:
       react: 19.1.1
 
