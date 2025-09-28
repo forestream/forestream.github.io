@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import clsx from "clsx";
+import { Header } from "./_components/Header";
 
 export const metadata: Metadata = {
   title: "forestream",
@@ -38,6 +39,7 @@ export default function RootLayout({
           "[&_h1]:my-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:my-2 [&_h2]:text-xl [&_h2]:font-bold [&_p]:mb-2 [&_p]:text-lg [&_strong]:font-bold",
         )}
       >
+        <Header />
         {children}
       </body>
     </html>
