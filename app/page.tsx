@@ -1,4 +1,4 @@
-import WideImage from "./_components/WideImage";
+import WideImage from "./_components/wide-image";
 import Link from "next/link";
 
 export default function Home() {
