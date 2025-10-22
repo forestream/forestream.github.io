@@ -20,7 +20,7 @@ export function Header() {
       <button popoverTarget="list" className="cursor-pointer hover:underline">
         목록
       </button>
-      <div popover="auto" id="list" className="mt-10 ml-6 overflow-visible">
+      <div popover="auto" id="list" className="mt-10 ml-8 overflow-visible">
         <ul className="p-2 shadow-md shadow-slate-800">
           <Sections
             render={({ heading, key }) => (
@@ -40,7 +40,7 @@ export function Header() {
       <button popoverTarget="logs" className="cursor-pointer hover:underline">
         로그
       </button>
-      <div popover="auto" id="logs" className="mt-10 ml-6 overflow-visible">
+      <div popover="auto" id="logs" className="mt-10 ml-20 overflow-visible">
         <ul className="p-2 shadow-md shadow-slate-800">
           {logs.map((log) => (
             <Link key={log} href={`/logs/${log}`}>
