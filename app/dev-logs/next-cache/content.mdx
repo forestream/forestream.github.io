@@ -63,15 +63,29 @@ export default async function Timestamp() {
 
 /timestamp 페이지를 강력 새로고침 해도 똑같은 타임스탬프 값이 보인다. 스태틱한 경로이기 때문에 빌드할 때 렌더링 중에 한 번 실제 데이터 소스를 가져오고 그 이후부터는 캐시의 값을 가져오는 것을 확인할 수 있다. `data.body`에 base64 형태로 응답값이 담겨 있다. 이 문자열을 디코딩하면 `{"timestamp":"2025. 10. 26. 오후 6:39:31"}`가 된다.
 
-```js
-const base64 = 'eyJ0aW1lc3RhbXAiOiIyMDI1LiAxMC4gMjYuIOyYpO2bhCA2OjM5OjMxIn0=';
-const string = atob(base64);
-const bytes = Uint8Array.from(string, (char) => char.charCodeAt(0));
-const td = new TextDecoder();
-const decoded = td.decode(bytes);
-```
-
 ### 후속 빌드
 이후에 수정사항 없이 빌드를 반복하더라도 처음 받았던 타임스탬프를 똑같이 보여준다. `fetch-cache`의 파일 생성 시각도 처음 값에서 변하지 않음을 확인할 수 있다.
 
-### 같은 페이지에 `fetch` 추가
+같은 페이지에 `fetch`를 추가하면 새로운 `.next/cache/fetch-cache` 안에 JSON을 담은 새로운 파일이 생성되고 기존에 있던 캐시는 그대로 유지된다. 
+
+JSON의 revalidate 키를 보면 알 수 있듯, 명시적인 설정이 없으면 캐시의 수명은 1년(31536000초)인 듯하다.
+
+
+```ts
+// packages\next\src\server\lib\patch-fetch.ts
+
+if (
+  incrementalCache &&
+  (isCacheableRevalidate || serverComponentsHmrCache)
+) {
+  try {
+    cacheKey = await incrementalCache.generateCacheKey(
+      fetchUrl,
+      isRequestInput ? (input as RequestInit) : init
+    )
+  } catch (err) {
+    console.error(`Failed to generate cache key for`, input)
+  }
+}
+```
+
