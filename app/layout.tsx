@@ -6,7 +6,10 @@ import { Header } from "./_components/header";
 import { HeaderDataLayer } from "./_components/header-data-layer";
 
 export const metadata: Metadata = {
-  title: "forestream",
+  title: {
+    default: "forestream",
+    template: "%s | forestream",
+  },
   description: "forestream's personal website",
   authors: [
     { name: "forestream", url: "https://github.com/forestream" },
