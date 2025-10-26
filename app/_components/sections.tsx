@@ -19,6 +19,6 @@ export function Sections({
     setHeadings(nextHeadings as HTMLElement[]);
   }, []);
   return headings.map((heading: HTMLElement) =>
-    render({ heading, key: heading.id }),
+    render({ heading, key: heading.id + heading.innerText }),
   );
 }

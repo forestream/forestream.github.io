@@ -1,4 +1,14 @@
 # Next Cache 
 넥스트가 관리하는 캐시는 네 가지 정도가 있다. 클라이언트에서는 Router Cache, 서버의 Full Route Cache, Request Memoization, Data Cache가 있다. 넥스트의 캐시 동작을 확인할 땐 개발 환경은 HMR(Hot Module Replacement)로 인해서 실제 배포 사이트의 행동을 정확하게 볼 수 없을 수 있기 때문에 빌드 후 테스트하는 것이 더 좋다.
 
+## Request Memoization 
+각각의 렌더링마다 메모리에 저장되었다가 렌더링이 끝나고 휘발되는 캐시이다. 똑같은 fetch를 여러 컴포넌트에서 호출해야 할 때 넥스트는 매번 대상 URL에 요청을 보내지 않고 처음 요청으로 캐싱된 데이터를 사용한다. 요즘 작업하고 있는 프로젝트를 예로 들자면 게시글 목록 컴포넌트와 게시글 페이지네이션 컴포넌트에서 같은 URL로 호출하는 경우에 이 캐싱 기법이 사용된다. 
+
 ## Data Cache
+렌더링 중에 호출된 fetch 요청은 Request Memoization 뿐만 아니라 서버에 영구한 캐시로 남게 된다. 이는 빌드나 배포를 반복할 때도 유지되어서 다이나믹 라우트에서는 몰라도 스태틱 라우트에서는 별도의 옵션을 설정하지 않는 한 처음 빌드 시 캐싱되었던 데이터가 영구히 남게 된다. 
+
+<u>[학습용 레포](https://github.com/forestream)</u>
+- `bun run dev-build`로 임시 서버 역할을 할 dev 서버를 실행하고 빌드 진행 후 종료
+    - Powershell 스크립트이기 때문에 리눅스 환경에서는 `next dev -p 3000` 실행 후 추가 터미널에서 `next build` 실행 후 결과 확인
+
+
