@@ -11,4 +11,31 @@
 - `bun run dev-build`로 임시 서버 역할을 할 dev 서버를 실행하고 빌드 진행 후 종료
     - Powershell 스크립트이기 때문에 리눅스 환경에서는 `next dev -p 3000` 실행 후 추가 터미널에서 `next build` 실행 후 결과 확인
 
+```ts
+// app/api/timestamp/route.ts
 
+export async function GET() {
+  const now = Date.now();
+  const formattedTimestamp = new Date(now).toLocaleString();
+  return new Response(JSON.stringify({ timestamp: formattedTimestamp }), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
+```
+
+```ts
+// app/timestamp/page.tsx
+
+export default async function Timestamp() {
+  const response = await fetch("http://localhost:3000/api/timestamp");
+  const data = await response.json();
+
+  ...
+}
+```
+
+### 첫번째 빌드
+`/timestamp` 페이지는 params나 cookies 등의 서버 API를 쓰지도 않고, 캐시 옵션도 명시한 것이 없기 때문에 스태틱 렌더링이 진행된다. 빌드가 끝나고 나면 `.next/cache` 폴더가 생성되는 것을 확인할 수 있다. 

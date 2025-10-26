@@ -37,7 +37,7 @@ export default function RootLayout({
       <body
         className={clsx(
           notoSansKR.className,
-          "m-4 [&_h1]:my-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:my-2 [&_h2]:text-xl [&_h2]:font-bold [&_p]:mb-2 [&_strong]:font-bold",
+          "m-4 [&_h1]:my-4 [&_h1]:text-2xl [&_h1,h2,h3]:font-bold [&_h2]:text-xl [&_h2,h3]:my-2 [&_p]:mb-2 [&_strong]:font-bold",
         )}
       >
         <HeaderDataLayer>
