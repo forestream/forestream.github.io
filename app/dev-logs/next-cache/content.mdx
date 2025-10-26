@@ -7,7 +7,7 @@
 ## Data Cache
 렌더링 중에 호출된 fetch 요청은 Request Memoization 뿐만 아니라 서버에 영구한 캐시로 남게 된다. 이는 빌드나 배포를 반복할 때도 유지되어서 다이나믹 라우트에서는 몰라도 스태틱 라우트에서는 별도의 옵션을 설정하지 않는 한 처음 빌드 시 캐싱되었던 데이터가 영구히 남게 된다. 
 
-<u>[학습용 레포](https://github.com/forestream)</u>
+<u>[학습용 코드](https://github.com/forestream)</u>
 - `bun run dev-build`로 임시 서버 역할을 할 dev 서버를 실행하고 빌드 진행 후 종료
     - Powershell 스크립트이기 때문에 리눅스 환경에서는 `next dev -p 3000` 실행 후 추가 터미널에서 `next build` 실행 후 결과 확인
 
@@ -38,4 +38,40 @@ export default async function Timestamp() {
 ```
 
 ### 첫번째 빌드
-`/timestamp` 페이지는 params나 cookies 등의 서버 API를 쓰지도 않고, 캐시 옵션도 명시한 것이 없기 때문에 스태틱 렌더링이 진행된다. 빌드가 끝나고 나면 `.next/cache` 폴더가 생성되는 것을 확인할 수 있다. 
+`/timestamp` 페이지는 params나 cookies 등의 서버 API를 쓰지도 않고, 캐시 옵션도 명시한 것이 없기 때문에 스태틱 렌더링이 진행된다. 빌드가 끝나고 나면 `.next/cache/fetch-cache` 경로에 해쉬 파일명을 가진 파일이 생성되는 것을 확인할 수 있다. 파일 내부에는 플레인 텍스트로 JSON이 입력되어 있다. 
+
+```json
+{
+    "kind": "FETCH",
+    "data": {
+        "headers": {
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "date": "Sun, 26 Oct 2025 09:39:31 GMT",
+            "keep-alive": "timeout=5",
+            "transfer-encoding": "chunked",
+            "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
+        },
+        "body": "eyJ0aW1lc3RhbXAiOiIyMDI1LiAxMC4gMjYuIOyYpO2bhCA2OjM5OjMxIn0=",
+        "status": 200,
+        "url": "http://localhost:3000/api/timestamp"
+    },
+    "revalidate": 31536000,
+    "tags": []
+}
+```
+
+/timestamp 페이지를 강력 새로고침 해도 똑같은 타임스탬프 값이 보인다. 스태틱한 경로이기 때문에 빌드할 때 렌더링 중에 한 번 실제 데이터 소스를 가져오고 그 이후부터는 캐시의 값을 가져오는 것을 확인할 수 있다. `data.body`에 base64 형태로 응답값이 담겨 있다. 이 문자열을 디코딩하면 `{"timestamp":"2025. 10. 26. 오후 6:39:31"}`가 된다.
+
+```js
+const base64 = 'eyJ0aW1lc3RhbXAiOiIyMDI1LiAxMC4gMjYuIOyYpO2bhCA2OjM5OjMxIn0=';
+const string = atob(base64);
+const bytes = Uint8Array.from(string, (char) => char.charCodeAt(0));
+const td = new TextDecoder();
+const decoded = td.decode(bytes);
+```
+
+### 후속 빌드
+이후에 수정사항 없이 빌드를 반복하더라도 처음 받았던 타임스탬프를 똑같이 보여준다. `fetch-cache`의 파일 생성 시각도 처음 값에서 변하지 않음을 확인할 수 있다.
+
+### 같은 페이지에 `fetch` 추가
