@@ -3,13 +3,19 @@
 import { createContext } from "react";
 import { useContext } from "react";
 
-const LogsContext = createContext<string[] | null>(null);
+const LogsContext = createContext<{
+  dailyLogs: string[];
+  devLogs: string[];
+} | null>(null);
 
 export function LogsProvider({
   logs,
   children,
 }: {
-  logs: string[];
+  logs: {
+    dailyLogs: string[];
+    devLogs: string[];
+  };
   children: React.ReactNode;
 }) {
   return <LogsContext.Provider value={logs}>{children}</LogsContext.Provider>;
