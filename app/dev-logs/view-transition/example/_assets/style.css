@@ -1,0 +1,25 @@
+::view-transition-old(todo-list-all) {
+    animation: swipe-out-left 0.2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+::view-transition-old(todo-list-completed) {
+    animation: swipe-out-right 0.2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+::view-transition-new(todo-list-all) {
+    animation: swipe-in-left 0.2s ease-in-out;
+}
+
+::view-transition-new(todo-list-completed) {
+    animation: swipe-in-right 0.2s ease-in-out;
+}
+
+#todo-list[data-filter="all"] {
+    view-transition-name: todo-list-all;
+}
+
+#todo-list[data-filter="completed"] {
+    view-transition-name: todo-list-completed;
+}

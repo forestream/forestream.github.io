@@ -1,0 +1,12 @@
+# View Transition
+MDN을 확인해보니 뷰트랜지션과 관련한 웹 API가 2025년 10월 기준으로 모든 브라우저에서 지원이 되는 표시가 보인다. 리액트에서도 `ViewTransition` 컴포넌트가 카나리 버전에 있고 곧 안정화 될 것 같다. 이번엔 바닐라 코드로 뷰트랜지션을 먼저 사용해봤다.
+
+[예시 페이지](/dev-logs/view-transition/example)
+
+## DOM의 변화를 `document.startTransition()` 안에서 호출
+
+```js
+const transition = document.startViewTransition(() => {
+      renderAllTodos(todos);
+    });
+```
