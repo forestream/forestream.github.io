@@ -24,3 +24,18 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer mdx {
+  pre {
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  pre > code {
+    white-space: pre-wrap;
+    width: 100%;
+    display: block;
+  }
+}
