@@ -1,12 +1,77 @@
 # View Transition
 MDN을 확인해보니 뷰트랜지션과 관련한 웹 API가 2025년 10월 기준으로 모든 브라우저에서 지원이 되는 표시가 보인다. 리액트에서도 `ViewTransition` 컴포넌트가 카나리 버전에 있고 곧 안정화 될 것 같다. 이번엔 바닐라 코드로 뷰트랜지션을 먼저 사용해봤다.
 
-[예시 페이지](/dev-logs/view-transition/example)
+<span className="underline hover:text-slate-400 duration-100">[예시 페이지](/dev-logs/view-transition/example)</span>
 
 ## DOM의 변화를 `document.startTransition()` 안에서 호출
 
 ```js
 const transition = document.startViewTransition(() => {
-      renderAllTodos(todos);
-    });
+  renderAllTodos(todos);
+});
 ```
+
+브라우저가 돔을 조작하고 다음 렌더를 진행하는데 이전 상태의 돔과 다음 렌더링 될 돔의 이미지를 캡쳐해서 가상 요소로 만든다. 그 요소들은 `::view-transition-*`의 이름을 가졌다. 트랜지션이 진행 중일 때 요소검사를 자세히 보면 아래와 비슷하다:
+
+```
+::view-transition
+  ::view-transition-group(root)
+    ::view-transition-image-pair(root)
+      ::view-transition-old(root)
+      ::view-transition-new(root)
+  ::view-transition-group(todo-list-completed)
+    ::view-transition-image-pair(todo-list-completed)
+      ::view-transition-old(todo-list-completed)
+      ::view-transition-new(todo-list-completed)
+  ::view-transition-group(todo-list-all)
+    ::view-transition-image-pair(todo-list-all)
+      ::view-transition-old(todo-list-all)
+      ::view-transition-new(todo-list-all)
+```
+
+root 그룹은 기본으로 생성되는 요소다. `todo-list-completed`나 `todo-list-all`은 내가 커스텀으로 지정한 스타일 속성이다. 이는 `view-transition-name` 속성으로 선언한다.
+
+```css
+#todo-list[data-filter="all"] {
+    view-transition-name: todo-list-all;
+}
+
+#todo-list[data-filter="completed"] {
+    view-transition-name: todo-list-completed;
+}
+```
+
+선언한 트랜지션명을 `view-transition-old`나 `view-transition-new`의 가상요소 인수로 전달하여 해당 요소의 스타일을 선언한다.
+
+```css
+::view-transition-old(todo-list-all) {
+    animation: swipe-out-left 0.2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+::view-transition-old(todo-list-completed) {
+    animation: swipe-out-right 0.2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+::view-transition-new(todo-list-all) {
+    animation: swipe-in-left 0.2s ease-in-out;
+}
+
+::view-transition-new(todo-list-completed) {
+    animation: swipe-in-right 0.2s ease-in-out;
+}
+```
+
+## 깜빡임
+
+처음에는 `animation-fill-mode` 속성을 선언하지 않았더니 이전 가상 요소가 애니메이션을 마치고 다시 제자리에 한 프레임정도 나타났다가 다시 사라지는 현상이 있었다. 원인을 모르는 채 원본 요소의 문제인 줄 알고 ul 자체를 지워보기도 하다가 가상 요소의 문제임을 파악했다.
+
+처음 해결법은 view-transition-old 가상 요소에 transform: translateX() 스타일을 선언하는 것이었고, 이 방법도 유효하다. 다만 문제의 근원은 animation의 기본 동작에 있는 것이기 때문에 그것을 수정하는 것이 맞다.
+
+CSS animation은 한 번 실행되고 마는 속성이라면 그 요소의 마지막 위치를 지정할 수 있다. animation-fill-mode를 이때 사용한다. 값은 none이 디폴트. 그 외에 forwards나 backwords, both를 사용하는데 위의 깜빡임 문제를 해결하려면 forwards 값을 사용하여 마지막 키프레임의 스타일을 애니메이션 종료 후에도 유지하게 할 수 있다.
+
+## 준비와 완료 단계 등은 프로미스 활용
+`document.startTransition()`은 `ViewTransition` 인스턴스를 반환하고 `ViewTransition` 인스턴스는 ready, finished, updateCallbackDone 등 프로미스 속성을 반환한다. 이를 활용하여 트랜지션 실행 전, 실행 후, 콜백 실핼 후의 단계에 원하는 코드를 실행할 수 있다.
+
+아직 페이지 이동 간의 트랜지션을 적용해보지 않았다. 다음 학습 주제. 이는 `@view-transition` at-rule을 사용하는 것 같은데, MDN을 보니 아직 Firefox는 호환되지 않는다. 이를 마치면 리액트의 ViewTransition 컴포넌트로 넘어갈 예정.

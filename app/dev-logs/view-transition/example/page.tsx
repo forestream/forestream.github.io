@@ -31,7 +31,13 @@ export default async function ExamplePage() {
 
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: page.toString() }} />
+      <div
+        className="[&_button]:cursor-pointer [&_button]:border [&_button]:px-2"
+        dangerouslySetInnerHTML={{ __html: page.toString() }}
+      />
+      <span className="mt-10 inline-block text-xs text-slate-500">
+        View Transition 학습용 페이지. 스타일 외에 기능 없음
+      </span>
       <Script src={script.toString()} />
     </>
   );
