@@ -75,3 +75,44 @@ CSS animation은 한 번 실행되고 마는 속성이라면 그 요소의 마�
 `document.startTransition()`은 `ViewTransition` 인스턴스를 반환하고 `ViewTransition` 인스턴스는 ready, finished, updateCallbackDone 등 프로미스 속성을 반환한다. 이를 활용하여 트랜지션 실행 전, 실행 후, 콜백 실핼 후의 단계에 원하는 코드를 실행할 수 있다.
 
 아직 페이지 이동 간의 트랜지션을 적용해보지 않았다. 다음 학습 주제. 이는 `@view-transition` at-rule을 사용하는 것 같은데, MDN을 보니 아직 Firefox는 호환되지 않는다. 이를 마치면 리액트의 ViewTransition 컴포넌트로 넘어갈 예정.
+
+## MPA
+페이지 이동 간에 뷰트랜지션을 적용하려면 `@view-transition` at-rule을 사용해야 한다. 다만 이는 25년 11월 기준 MDN에 따르면 파이어폭스에서는 지원되지 않는다. 
+
+간단한 시연을 위해 추가한 스타일은 몇 줄 되지 않는다. 
+```css
+@view-transition {
+  navigation: auto;
+}
+
+/* Create a custom animation */
+@keyframes move-out {
+  from {
+    transform: translateY(0%);
+  }
+  
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes move-in {
+  from {
+    transform: translateY(100%);
+  }
+  
+  to {
+    transform: translateY(0%);
+  }
+}
+
+/* Apply the custom animation to the old and new page states */
+::view-transition-old(root) {
+  animation: 0.4s ease-in both move-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.4s ease-in both move-in;
+}
+```
+페이지 간의 트랜지션이 작동하려면 양쪽 페이지 모두 `@view-transition` 스타일을 정의하고 있어야 한다. 그 외에는 SPA의 경우처럼 `::view-transition-*` 가상 선택자와 키프레임을 활용하여 트랜지션 스타일을 정의한다.
