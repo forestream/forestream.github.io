@@ -4,7 +4,17 @@ import Content from "./content.mdx";
 export const metadata: Metadata = {
   title: "Next Cache",
   description: "My study results about Next Cache.",
-  keywords: ["Next", "Cache", "Study", "넥스트", "캐시"],
+  keywords: [
+    "Next",
+    "Cache",
+    "Study",
+    "넥스트",
+    "캐시",
+    "Next.js",
+    "cache",
+    "fetch",
+    "revalidate",
+  ],
 };
 
 export default function Page() {
