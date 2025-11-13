@@ -1,24 +1,17 @@
 "use client";
 
 import { Sections } from "./sections";
-import { useLogs } from "./logs-provider";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { LogContextReader } from "./log-context-reader";
 
 export function Header() {
-  const router = useRouter();
-  const { dailyLogs, devLogs } = useLogs();
-
   return (
     <header className="sticky top-0 right-0 left-0 min-h-6 border-b border-slate-400 bg-white p-2 [&>button:not(:first-child)]:ml-4">
-      <button
-        className="cursor-pointer hover:underline"
-        onClick={() => router.push("/")}
-      >
-        홈
-      </button>
+      <Link className="contents" href="/">
+        <button className="cursor-pointer hover:underline">홈</button>
+      </Link>
       <button popoverTarget="list" className="cursor-pointer hover:underline">
-        목록
+        목차
       </button>
       <div popover="auto" id="list" className="mt-10 ml-8 overflow-visible">
         <ul className="p-2 shadow-md shadow-slate-800">
@@ -49,11 +42,14 @@ export function Header() {
         className="mt-10 ml-20 overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          {dailyLogs.map((log) => (
-            <Link key={log} href={`/daily-logs/${log}`}>
-              <li className="cursor-pointer hover:underline">{log}</li>
-            </Link>
-          ))}
+          <LogContextReader
+            logKey="dailyLogs"
+            render={({ log }) => (
+              <Link href={`/daily-logs/${log}`}>
+                <li className="cursor-pointer hover:underline">{log}</li>
+              </Link>
+            )}
+          />
         </ul>
       </div>
       <button
@@ -68,11 +64,14 @@ export function Header() {
         className="mt-10 ml-44 overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          {devLogs.map((log) => (
-            <Link key={log} href={`/dev-logs/${log}`}>
-              <li className="cursor-pointer hover:underline">{log}</li>
-            </Link>
-          ))}
+          <LogContextReader
+            logKey="devLogs"
+            render={({ log }) => (
+              <Link href={`/dev-logs/${log}`}>
+                <li className="cursor-pointer hover:underline">{log}</li>
+              </Link>
+            )}
+          />
         </ul>
       </div>
     </header>

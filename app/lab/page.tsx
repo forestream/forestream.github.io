@@ -1,4 +1,4 @@
-import { Beeper } from "./Beeper";
+import { Beeper } from "./beeper";
 
 export default function Lab() {
   return (
