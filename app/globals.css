@@ -39,3 +39,11 @@ body {
     display: block;
   }
 }
+
+@utility anchor-* {
+  anchor-name: --value([*])
+}
+
+@utility position-anchor-* {
+  position-anchor: --value([*])
+}

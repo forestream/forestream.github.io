@@ -10,10 +10,17 @@ export function Header() {
       <Link className="contents" href="/">
         <button className="cursor-pointer hover:underline">홈</button>
       </Link>
-      <button popoverTarget="list" className="cursor-pointer hover:underline">
+      <button
+        popoverTarget="table-of-contents"
+        className="anchor-[--table-of-contents] cursor-pointer hover:underline"
+      >
         목차
       </button>
-      <div popover="auto" id="list" className="mt-10 ml-8 overflow-visible">
+      <div
+        popover="auto"
+        id="table-of-contents"
+        className="position-anchor-[--table-of-contents] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
+      >
         <ul className="p-2 shadow-md shadow-slate-800">
           <Sections
             render={({ heading, key }) => (
@@ -32,14 +39,14 @@ export function Header() {
       </div>
       <button
         popoverTarget="daily-logs"
-        className="cursor-pointer hover:underline"
+        className="anchor-[--daily-logs] cursor-pointer hover:underline"
       >
         데일리 로그
       </button>
       <div
         popover="auto"
         id="daily-logs"
-        className="mt-10 ml-20 overflow-visible"
+        className="position-anchor-[--daily-logs] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
           <LogContextReader
@@ -54,14 +61,14 @@ export function Header() {
       </div>
       <button
         popoverTarget="dev-logs"
-        className="cursor-pointer hover:underline"
+        className="anchor-[--dev-logs] cursor-pointer hover:underline"
       >
         데브 로그
       </button>
       <div
         popover="auto"
         id="dev-logs"
-        className="mt-10 ml-44 overflow-visible"
+        className="position-anchor-[--dev-logs] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
           <LogContextReader
