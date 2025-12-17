@@ -81,6 +81,28 @@ export function Header() {
           />
         </ul>
       </div>
+      <button
+        popoverTarget="stories"
+        className="anchor-[--stories] cursor-pointer hover:underline"
+      >
+        이야기
+      </button>
+      <div
+        popover="auto"
+        id="stories"
+        className="position-anchor-[--stories] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
+      >
+        <ul className="p-2 shadow-md shadow-slate-800">
+          <LogContextReader
+            logKey="stories"
+            render={({ log }) => (
+              <Link href={`/stories/${log}`}>
+                <li className="cursor-pointer hover:underline">{log}</li>
+              </Link>
+            )}
+          />
+        </ul>
+      </div>
     </header>
   );
 }

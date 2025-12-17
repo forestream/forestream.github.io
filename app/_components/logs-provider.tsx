@@ -6,6 +6,7 @@ import { useContext } from "react";
 const LogsContext = createContext<{
   dailyLogs: string[];
   devLogs: string[];
+  stories: string[];
 } | null>(null);
 
 export function LogsProvider({
@@ -15,6 +16,7 @@ export function LogsProvider({
   logs: {
     dailyLogs: string[];
     devLogs: string[];
+    stories: string[];
   };
   children: React.ReactNode;
 }) {
