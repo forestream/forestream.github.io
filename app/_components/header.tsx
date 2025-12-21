@@ -1,19 +1,22 @@
 import Link from "next/link";
 import { SectionsRenderer } from "./sections-renderer";
 import { LogContextReaderRenderer } from "./log-context-reader-renderer";
+import { Button } from "./common/button";
 
 export function Header() {
   return (
     <header className="sticky top-0 right-0 left-0 min-h-6 border-b border-slate-400 bg-white p-2 [&>button:not(:first-child)]:ml-4">
       <Link className="contents" href="/">
-        <button className="cursor-pointer hover:underline">홈</button>
+        <Button>
+          <Button.Sheet>홈</Button.Sheet>
+        </Button>
       </Link>
-      <button
+      <Button
         popoverTarget="table-of-contents"
-        className="anchor-[--table-of-contents] cursor-pointer hover:underline"
+        className="anchor-[--table-of-contents]"
       >
-        목차
-      </button>
+        <Button.Sheet>목차</Button.Sheet>
+      </Button>
       <div
         popover="auto"
         id="table-of-contents"
@@ -23,12 +26,9 @@ export function Header() {
           <SectionsRenderer />
         </ul>
       </div>
-      <button
-        popoverTarget="daily-logs"
-        className="anchor-[--daily-logs] cursor-pointer hover:underline"
-      >
-        데일리 로그
-      </button>
+      <Button popoverTarget="daily-logs" className="anchor-[--daily-logs]">
+        <Button.Sheet>데일리 로그</Button.Sheet>
+      </Button>
       <div
         popover="auto"
         id="daily-logs"
@@ -38,12 +38,9 @@ export function Header() {
           <LogContextReaderRenderer pathnamePrefix="/daily-logs" />
         </ul>
       </div>
-      <button
-        popoverTarget="dev-logs"
-        className="anchor-[--dev-logs] cursor-pointer hover:underline"
-      >
-        데브 로그
-      </button>
+      <Button popoverTarget="dev-logs" className="anchor-[--dev-logs]">
+        <Button.Sheet>데브 로그</Button.Sheet>
+      </Button>
       <div
         popover="auto"
         id="dev-logs"
@@ -53,12 +50,9 @@ export function Header() {
           <LogContextReaderRenderer pathnamePrefix="/dev-logs" />
         </ul>
       </div>
-      <button
-        popoverTarget="stories"
-        className="anchor-[--stories] cursor-pointer hover:underline"
-      >
-        이야기
-      </button>
+      <Button popoverTarget="stories" className="anchor-[--stories]">
+        <Button.Sheet>이야기</Button.Sheet>
+      </Button>
       <div
         popover="auto"
         id="stories"

@@ -47,3 +47,11 @@ body {
 @utility position-anchor-* {
   position-anchor: --value([*])
 }
+
+@utility border-image-* {
+  border-image: --value([*])
+}
+
+@utility bg-clip-* {
+  background-clip: --value([*])
+}
