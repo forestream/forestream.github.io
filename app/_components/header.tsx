@@ -1,8 +1,6 @@
-"use client";
-
-import { Sections } from "./sections";
 import Link from "next/link";
-import { LogContextReader } from "./log-context-reader";
+import { SectionsRenderer } from "./sections-renderer";
+import { LogContextReaderRenderer } from "./log-context-reader-renderer";
 
 export function Header() {
   return (
@@ -22,19 +20,7 @@ export function Header() {
         className="position-anchor-[--table-of-contents] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          <Sections
-            render={({ heading, key }) => (
-              <li
-                key={key}
-                className="cursor-pointer hover:underline"
-                onClick={() => {
-                  heading.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                {heading.textContent}
-              </li>
-            )}
-          />
+          <SectionsRenderer />
         </ul>
       </div>
       <button
@@ -49,14 +35,7 @@ export function Header() {
         className="position-anchor-[--daily-logs] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          <LogContextReader
-            logKey="dailyLogs"
-            render={({ log }) => (
-              <Link href={`/daily-logs/${log}`}>
-                <li className="cursor-pointer hover:underline">{log}</li>
-              </Link>
-            )}
-          />
+          <LogContextReaderRenderer pathnamePrefix="/daily-logs" />
         </ul>
       </div>
       <button
@@ -71,14 +50,7 @@ export function Header() {
         className="position-anchor-[--dev-logs] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          <LogContextReader
-            logKey="devLogs"
-            render={({ log }) => (
-              <Link href={`/dev-logs/${log}`}>
-                <li className="cursor-pointer hover:underline">{log}</li>
-              </Link>
-            )}
-          />
+          <LogContextReaderRenderer pathnamePrefix="/dev-logs" />
         </ul>
       </div>
       <button
@@ -93,14 +65,7 @@ export function Header() {
         className="position-anchor-[--stories] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          <LogContextReader
-            logKey="stories"
-            render={({ log }) => (
-              <Link href={`/stories/${log}`}>
-                <li className="cursor-pointer hover:underline">{log}</li>
-              </Link>
-            )}
-          />
+          <LogContextReaderRenderer pathnamePrefix="/stories" />
         </ul>
       </div>
     </header>
