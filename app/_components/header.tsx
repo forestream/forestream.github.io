@@ -35,7 +35,10 @@ export function Header() {
         className="position-anchor-[--daily-logs] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          <LogContextReaderRenderer pathnamePrefix="/daily-logs" />
+          <LogContextReaderRenderer
+            pathnamePrefix="/daily-logs"
+            logKey="dailyLogs"
+          />
         </ul>
       </div>
       <Button popoverTarget="dev-logs" className="anchor-[--dev-logs]">
@@ -47,7 +50,10 @@ export function Header() {
         className="position-anchor-[--dev-logs] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          <LogContextReaderRenderer pathnamePrefix="/dev-logs" />
+          <LogContextReaderRenderer
+            pathnamePrefix="/dev-logs"
+            logKey="devLogs"
+          />
         </ul>
       </div>
       <Button popoverTarget="stories" className="anchor-[--stories]">
@@ -59,7 +65,10 @@ export function Header() {
         className="position-anchor-[--stories] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
       >
         <ul className="p-2 shadow-md shadow-slate-800">
-          <LogContextReaderRenderer pathnamePrefix="/stories" />
+          <LogContextReaderRenderer
+            pathnamePrefix="/stories"
+            logKey="stories"
+          />
         </ul>
       </div>
     </header>
