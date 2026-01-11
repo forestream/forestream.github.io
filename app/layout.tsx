@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Noto_Sans_KR } from "next/font/google";
+import { Gowun_Batang, Gowun_Dodum, Noto_Sans_KR } from "next/font/google";
 import clsx from "clsx";
 import { Header } from "./_components/header";
 import { HeaderDataLayer } from "./_components/header-data-layer";
@@ -30,6 +30,11 @@ const notoSansKR = Noto_Sans_KR({
   weight: ["400", "700"],
 });
 
+const gowunBatang = Gowun_Dodum({
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,7 +44,7 @@ export default function RootLayout({
     <html lang="ko">
       <body
         className={clsx(
-          notoSansKR.className,
+          gowunBatang.className,
           "mx-auto max-w-[800px] px-4 [&_h1]:my-4 [&_h1]:text-2xl [&_h1,h2,h3]:font-bold [&_h2]:text-xl [&_h2,h3]:my-2 [&_p]:mb-2 [&_strong]:font-bold",
         )}
       >

@@ -7,6 +7,7 @@ const LogsContext = createContext<{
   dailyLogs: string[];
   devLogs: string[];
   stories: string[];
+  books: string[];
 } | null>(null);
 
 export function LogsProvider({
@@ -17,6 +18,7 @@ export function LogsProvider({
     dailyLogs: string[];
     devLogs: string[];
     stories: string[];
+    books: string[];
   };
   children: React.ReactNode;
 }) {

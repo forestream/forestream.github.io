@@ -8,7 +8,7 @@ export function LogContextReader({
   logKey,
 }: {
   render?: ({ log }: { log: string }) => ReactNode;
-  logKey: "dailyLogs" | "devLogs" | "stories";
+  logKey: "dailyLogs" | "devLogs" | "stories" | "books";
 }) {
   const logs = useLogs();
   return render

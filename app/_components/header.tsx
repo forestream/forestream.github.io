@@ -71,6 +71,18 @@ export function Header() {
           />
         </ul>
       </div>
+      <Button popoverTarget="books" className="anchor-[--books]">
+        <Button.Sheet>책</Button.Sheet>
+      </Button>
+      <div
+        popover="auto"
+        id="books"
+        className="position-anchor-[--books] top-[calc(anchor(bottom)+8px)] left-[anchor(left)] overflow-visible"
+      >
+        <ul className="p-2 shadow-md shadow-slate-800">
+          <LogContextReaderRenderer pathnamePrefix="/books" logKey="books" />
+        </ul>
+      </div>
     </header>
   );
 }

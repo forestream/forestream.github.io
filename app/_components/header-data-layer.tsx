@@ -16,8 +16,9 @@ export async function HeaderDataLayer({
   const stories = await getChildDirectories(
     join(process.cwd(), "app", "stories"),
   );
+  const books = await getChildDirectories(join(process.cwd(), "app", "books"));
   return (
-    <LogsProvider logs={{ dailyLogs, devLogs, stories }}>
+    <LogsProvider logs={{ dailyLogs, devLogs, stories, books }}>
       {children}
     </LogsProvider>
   );
