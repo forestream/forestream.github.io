@@ -1,3 +1,5 @@
+import Content from "./content.mdx";
+
 export default function Page() {
-  return <div>Miracle</div>;
+  return <Content />;
 }

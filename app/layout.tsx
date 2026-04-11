@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Gowun_Batang, Gowun_Dodum, Noto_Sans_KR } from "next/font/google";
+import { Gowun_Dodum } from "next/font/google";
 import clsx from "clsx";
 import { Header } from "./_components/header";
 import { HeaderDataLayer } from "./_components/header-data-layer";
@@ -24,11 +24,6 @@ export const metadata: Metadata = {
     "pilgrimage",
   ],
 };
-
-const notoSansKR = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
 
 const gowunBatang = Gowun_Dodum({
   subsets: ["latin"],
