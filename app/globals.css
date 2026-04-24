@@ -31,6 +31,8 @@ body {
     border-radius: 8px;
     margin-top: 12px;
     margin-bottom: 12px;
+    max-height: 800px;
+    overflow-y: auto;
   }
 
   pre > code {
