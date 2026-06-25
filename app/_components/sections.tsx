@@ -17,6 +17,7 @@ export function Sections({
   const [headings, setHeadings] = useState<HTMLElement[]>([]);
   useEffect(() => {
     const nextHeadings = Array.from(document.querySelectorAll("h1, h2"));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHeadings(nextHeadings as HTMLElement[]);
   }, [pathname]);
   return headings.map((heading: HTMLElement) =>

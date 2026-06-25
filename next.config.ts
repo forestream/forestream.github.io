@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     resolveExtensions: [".ts", ".tsx", ".md", ".mdx", ".jsx", ".js"],
   },
+  images: { unoptimized: true },
 };
 
 export default withMDX(nextConfig);

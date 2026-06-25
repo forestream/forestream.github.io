@@ -1,6 +1,4 @@
-import clsx from "clsx";
 import type { MDXComponents } from "mdx/types";
-import { twMerge } from "tailwind-merge";
 
 const components: MDXComponents = {
   ul: (props) => (
