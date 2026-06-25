@@ -10,11 +10,14 @@ export default function WideImage({
 }: ComponentProps<typeof Image>) {
   return (
     <Image
-    {...props}
-    alt={alt||''}
+      alt={alt || ""}
       className={twMerge(
         clsx("mx-auto aspect-video h-full max-h-1/2 object-contain", className),
       )}
+      width={600}
+      height={400}
+      objectFit="contain"
+      {...props}
     />
   );
 }
